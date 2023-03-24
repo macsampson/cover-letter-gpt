@@ -3,7 +3,9 @@
 	"version": "1.0.0",
 	"description": "",
 	"scripts": {
-		"server": "nodemon server.ts"
+		"dev": "nodemon server.ts",
+		"tsc": "tsc",
+		"start:prod": "tsc && node build/server.js"
 	},
 	"keywords": [],
 	"author": "",
