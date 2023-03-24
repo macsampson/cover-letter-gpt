@@ -92,7 +92,7 @@ const App: React.FC<Props> = () => {
 
 		const start = Date.now()
 		try {
-			const response = await fetch('http://localhost:5000', {
+			const response = await fetch('https://cover-letter-gpt.onrender.com', {
 				method: 'POST',
 				body: formData,
 			})
