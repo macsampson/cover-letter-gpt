@@ -173,8 +173,9 @@ const App: React.FC<Props> = () => {
 					justifyContent="center"
 					padding={2}
 					fontFamily="Roboto"
+					id="title"
 				>
-					<h1>🔥Cover Letter GPT🔥</h1>
+					<h1>Cover Letter GPT 📃</h1>
 				</Grid2>
 				<form onSubmit={handleSubmit}>
 					<Grid2
