@@ -8,6 +8,7 @@ import Grid from '@mui/material/Grid' // Grid version 1
 import Grid2 from '@mui/material/Unstable_Grid2' // Grid version 2
 import InputLabel from '@mui/material/InputLabel'
 import { createTheme, ThemeProvider } from '@mui/material/styles'
+import { fontSize } from '@mui/system'
 
 const theme = createTheme({
 	typography: {
@@ -181,6 +182,7 @@ const App: React.FC<Props> = () => {
 					<Grid2
 						container
 						spacing={2}
+						padding={3}
 						justifyContent="center"
 					>
 						<Grid2 lg={6}>
@@ -205,13 +207,15 @@ const App: React.FC<Props> = () => {
 								{file && <p>{file.name}</p>}
 							</div>
 						</Grid2>
-					</Grid2>
-					<Grid2
-						container
-						justifyContent="center"
-						spacing={2}
-					>
-						<Grid2>
+						<Grid2
+							lg={6}
+							// alignItems="center"
+							style={{ textAlign: 'center' }}
+							display="flex"
+							justifyContent="center"
+							// direction="column"
+							alignItems="flex-end"
+						>
 							<Button
 								variant="contained"
 								type="submit"
@@ -219,8 +223,6 @@ const App: React.FC<Props> = () => {
 							>
 								Generate Cover Letter
 							</Button>
-						</Grid2>
-						<Grid2>
 							{loading && (
 								<CircularProgress
 									thickness={7}
@@ -228,20 +230,15 @@ const App: React.FC<Props> = () => {
 								/>
 							)}
 						</Grid2>
-					</Grid2>
-					<Grid2
-						container
-						spacing={2}
-						justifyContent="center"
-						padding={5}
-					>
+
 						<Grid2 lg={6}>
-							<InputLabel
+							{/* <InputLabel
 								htmlFor="text-input"
-								style={{ textAlign: 'center' }}
+								style={{ textAlign: 'center', fontSize: '1.5em' }}
+								className="textField"
 							>
 								Job Description
-							</InputLabel>
+							</InputLabel> */}
 							<div id="job-description">
 								<TextField
 									id="text-input"
@@ -255,12 +252,13 @@ const App: React.FC<Props> = () => {
 							</div>
 						</Grid2>
 						<Grid2 lg={6}>
-							<InputLabel
+							{/* <InputLabel
 								htmlFor="text-input"
-								style={{ textAlign: 'center' }}
+								style={{ textAlign: 'center', fontSize: '1.5em' }}
+								className="textField"
 							>
 								Cover Letter
-							</InputLabel>
+							</InputLabel> */}
 							<TextField
 								id="cover-letter-result"
 								placeholder="Waiting for cover letter generation..."
@@ -269,11 +267,6 @@ const App: React.FC<Props> = () => {
 								multiline
 								style={{ width: '100%' }}
 							></TextField>
-							<Grid2
-								container
-								spacing={2}
-								justifyContent="center"
-							></Grid2>
 						</Grid2>
 					</Grid2>
 				</form>
