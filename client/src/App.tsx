@@ -178,84 +178,103 @@ const App: React.FC<Props> = () => {
 				>
 					<h1>Cover Letter GPT 📃</h1>
 				</Grid2>
-				<form onSubmit={handleSubmit}>
+				<Grid2
+					container
+					spacing={2}
+					padding={3}
+				>
 					<Grid2
-						container
-						spacing={2}
-						padding={3}
-						justifyContent="center"
+						// container
+						// justifyContent="center"
+						lg={6}
 					>
-						<Grid2 lg={6}>
-							<div
-								className={`drag-and-drop-container ${
-									isDragging ? 'dragging' : ''
-								}`}
-								onDragEnter={handleDragEnter}
-								onDragLeave={handleDragLeave}
-								onDragOver={handleDragOver}
-								onDrop={handleDrop}
-							>
-								<p>
-									Drag and drop your PDF or Word Resume here, or browse local
-									files.
-								</p>
-								<input
-									type="file"
-									accept=".pdf,.doc,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
-									onChange={handleFileChange}
-								/>
-								{file && <p>{file.name}</p>}
-							</div>
-						</Grid2>
-						<Grid2
-							lg={6}
-							// alignItems="center"
-							style={{ textAlign: 'center' }}
-							display="flex"
-							justifyContent="center"
-							// direction="column"
-							alignItems="flex-end"
-						>
-							<Button
-								sx={{ '.MuiButtonBase-root': { borderRadius: '10px' } }}
-								variant="contained"
-								type="submit"
-								color="success"
-							>
-								Generate Cover Letter
-							</Button>
-							{loading && (
-								<CircularProgress
-									thickness={7}
-									color="success"
-								/>
-							)}
-						</Grid2>
+						<form onSubmit={handleSubmit}>
+							<Grid2>
+								<div
+									className={`drag-and-drop-container ${
+										isDragging ? 'dragging' : ''
+									}`}
+									onDragEnter={handleDragEnter}
+									onDragLeave={handleDragLeave}
+									onDragOver={handleDragOver}
+									onDrop={handleDrop}
+								>
+									<p>
+										Drag and drop your PDF or Word Resume here, or browse local
+										files.
+									</p>
+									<input
+										type="file"
+										accept=".pdf,.doc,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+										onChange={handleFileChange}
+									/>
+									{file && <p>{file.name}</p>}
+								</div>
+							</Grid2>
 
-						<Grid2 lg={6}>
-							{/* <InputLabel
+							<Grid2>
+								{/* <InputLabel
 								htmlFor="text-input"
 								style={{ textAlign: 'center', fontSize: '1.5em' }}
 								className="textField"
 							>
 								Job Description
 							</InputLabel> */}
-							<div id="job-description">
-								<TextField
-									sx={{ '.MuiInputBase-root': { borderRadius: '10px' } }}
-									id="text-input"
-									placeholder="Please paste a job description..."
-									value={text}
-									onChange={handleInputChange}
-									// className={styles.textBox}
-									multiline
-									maxRows={5}
-									minRows={5}
-									style={{ width: '100%' }}
-								/>
-							</div>
-						</Grid2>
-						<Grid2 lg={6}>
+								<div id="job-description">
+									<TextField
+										sx={{ '.MuiInputBase-root': { borderRadius: '10px' } }}
+										id="text-input"
+										placeholder="Please paste a job description..."
+										value={text}
+										onChange={handleInputChange}
+										// className={styles.textBox}
+										multiline
+										maxRows={5}
+										minRows={5}
+										style={{ width: '100%' }}
+									/>
+								</div>
+							</Grid2>
+							<Grid2
+								style={{ textAlign: 'center' }}
+								display="flex"
+								justifyContent="center"
+								direction="column"
+								alignItems="flex-end"
+							>
+								<Button
+									sx={{ '.MuiButtonBase-root': { borderRadius: '10px' } }}
+									variant="contained"
+									type="submit"
+									color="success"
+								>
+									Generate Cover Letter
+								</Button>
+							</Grid2>
+							<Grid2
+								style={{ textAlign: 'center' }}
+								display="flex"
+								justifyContent="center"
+								direction="column"
+								alignItems="flex-end"
+							>
+								{loading && (
+									<CircularProgress
+										thickness={7}
+										color="success"
+									/>
+								)}
+							</Grid2>
+						</form>
+					</Grid2>
+					<Grid2
+						// container
+						// spacing={2}
+						// padding={3}
+						// justifyContent="center"
+						lg={6}
+					>
+						<Grid2>
 							{/* <InputLabel
 								htmlFor="text-input"
 								style={{ textAlign: 'center', fontSize: '1.5em' }}
@@ -274,7 +293,7 @@ const App: React.FC<Props> = () => {
 							></TextField>
 						</Grid2>
 					</Grid2>
-				</form>
+				</Grid2>
 			</ThemeProvider>
 		</main>
 	)
