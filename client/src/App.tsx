@@ -179,15 +179,14 @@ const App: React.FC<Props> = () => {
 					<h1>Cover Letter GPT 📃</h1>
 				</Grid2>
 				<Grid2
+					className="mainGrid"
 					container
 					spacing={2}
 					padding={3}
+					// justifyContent="center"
+					// display="flex"
 				>
-					<Grid2
-						// container
-						// justifyContent="center"
-						lg={6}
-					>
+					<Grid2 lg={6}>
 						<form onSubmit={handleSubmit}>
 							<Grid2>
 								<div
@@ -213,13 +212,6 @@ const App: React.FC<Props> = () => {
 							</Grid2>
 
 							<Grid2>
-								{/* <InputLabel
-								htmlFor="text-input"
-								style={{ textAlign: 'center', fontSize: '1.5em' }}
-								className="textField"
-							>
-								Job Description
-							</InputLabel> */}
 								<div id="job-description">
 									<TextField
 										sx={{ '.MuiInputBase-root': { borderRadius: '10px' } }}
@@ -231,7 +223,7 @@ const App: React.FC<Props> = () => {
 										multiline
 										maxRows={5}
 										minRows={5}
-										style={{ width: '100%' }}
+										// style={{ width: '100%' }}
 									/>
 								</div>
 							</Grid2>
@@ -267,21 +259,8 @@ const App: React.FC<Props> = () => {
 							</Grid2>
 						</form>
 					</Grid2>
-					<Grid2
-						// container
-						// spacing={2}
-						// padding={3}
-						// justifyContent="center"
-						lg={6}
-					>
+					<Grid2 lg={6}>
 						<Grid2>
-							{/* <InputLabel
-								htmlFor="text-input"
-								style={{ textAlign: 'center', fontSize: '1.5em' }}
-								className="textField"
-							>
-								Cover Letter
-							</InputLabel> */}
 							<TextField
 								sx={{ '.MuiInputBase-root': { borderRadius: '10px' } }}
 								id="cover-letter-result"
@@ -289,7 +268,7 @@ const App: React.FC<Props> = () => {
 								value={apiResponse}
 								// onChange={(e) => setApiResponse(e.target.value)}
 								multiline
-								style={{ width: '100%' }}
+								// style={{ width: '100%' }}
 							></TextField>
 						</Grid2>
 					</Grid2>
