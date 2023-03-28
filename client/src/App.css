@@ -108,6 +108,7 @@ a {
 
 textarea {
 	min-height: 100px;
+	/* border-radius: 10px; */
 }
 
 form {
@@ -146,7 +147,7 @@ input[type='file'] {
 	color: black;
 	/* padding: 8px 16px; */
 	border: none;
-	border-radius: 4px;
+	/* border-radius: 4px; */
 	cursor: pointer;
 }
 
@@ -156,7 +157,7 @@ input[type='file'] {
 	background-color: white;
 	/* padding: 8px; */
 	border: none;
-	border-radius: 4px;
+	border-radius: 10px;
 	cursor: pointer;
 	color: black;
 	/* min-height: 150px; */
@@ -165,14 +166,16 @@ input[type='file'] {
 
 .MuiInputBase-root {
 	min-height: 150px;
+	border-radius: 10px;
 }
 
-.MuiGrid2-root {
-	/* padding: 20px; */
+.textInput {
+	border-radius: 10px;
 }
 
 .textField {
 	font-size: 1.5em;
+	/* border-radius: 10px; */
 }
 
 #title {
@@ -187,6 +190,10 @@ input[type='file'] {
 h1 {
 	margin-bottom: 20px;
 }
+
+/* #text-input {
+	border-radius: 10px;
+} */
 
 /* #root {
 	max-width: 1280px;

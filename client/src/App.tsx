@@ -217,6 +217,7 @@ const App: React.FC<Props> = () => {
 							alignItems="flex-end"
 						>
 							<Button
+								sx={{ '.MuiButtonBase-root': { borderRadius: '10px' } }}
 								variant="contained"
 								type="submit"
 								color="success"
@@ -241,12 +242,15 @@ const App: React.FC<Props> = () => {
 							</InputLabel> */}
 							<div id="job-description">
 								<TextField
+									sx={{ '.MuiInputBase-root': { borderRadius: '10px' } }}
 									id="text-input"
 									placeholder="Please paste a job description..."
 									value={text}
 									onChange={handleInputChange}
 									// className={styles.textBox}
 									multiline
+									maxRows={5}
+									minRows={5}
 									style={{ width: '100%' }}
 								/>
 							</div>
@@ -260,6 +264,7 @@ const App: React.FC<Props> = () => {
 								Cover Letter
 							</InputLabel> */}
 							<TextField
+								sx={{ '.MuiInputBase-root': { borderRadius: '10px' } }}
 								id="cover-letter-result"
 								placeholder="Waiting for cover letter generation..."
 								value={apiResponse}
