@@ -9,6 +9,10 @@ import Grid2 from '@mui/material/Unstable_Grid2' // Grid version 2
 import InputLabel from '@mui/material/InputLabel'
 import { createTheme, ThemeProvider } from '@mui/material/styles'
 import { fontSize } from '@mui/system'
+import LoadingButton from '@mui/lab/LoadingButton'
+import DescriptionIcon from '@mui/icons-material/Description'
+import Snackbar from '@mui/material/Snackbar'
+import MuiAlert, { AlertProps } from '@mui/material/Alert'
 
 const theme = createTheme({
 	typography: {
@@ -18,6 +22,20 @@ const theme = createTheme({
 
 interface Props {}
 
+const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(
+	props,
+	ref
+) {
+	return (
+		<MuiAlert
+			elevation={6}
+			ref={ref}
+			variant="filled"
+			{...props}
+		/>
+	)
+})
+
 const App: React.FC<Props> = () => {
 	const [count, setCount] = useState(0)
 
@@ -26,6 +44,7 @@ const App: React.FC<Props> = () => {
 	const [text, setText] = useState('')
 	let [apiResponse, setApiResponse] = useState('')
 	let [loading, SetLoading] = useState(false)
+	let [alert, SetAlert] = useState(false)
 
 	const resultRef = useRef('')
 
@@ -87,6 +106,11 @@ const App: React.FC<Props> = () => {
 		SetLoading(true)
 		setApiResponse('')
 		const formData = new FormData()
+		if (!file || !text) {
+			SetAlert(true)
+			SetLoading(false)
+			return
+		}
 		// const source = new EventSource('/api/upload')
 		formData.append('file', file as Blob)
 		formData.append('text', text)
@@ -145,6 +169,7 @@ const App: React.FC<Props> = () => {
 
 			console.log('stream complete')
 		} catch (error) {
+			// console.log()
 			console.error(error)
 		}
 	}
@@ -165,6 +190,30 @@ const App: React.FC<Props> = () => {
 		setText(e.target.value)
 	}
 
+	const handleBrowseClick = () => {
+		const input = document.querySelector<HTMLInputElement>('input[type="file"]')
+		input && input.click()
+	}
+
+	const handleAlert = () => {
+		SetAlert(true)
+	}
+
+	const handleClose = (
+		event?: React.SyntheticEvent | Event,
+		reason?: string
+	) => {
+		if (reason === 'clickaway') {
+			return
+		}
+
+		SetAlert(false)
+	}
+
+	// const handleClick = (e: React.FormEvent<HTMLFormElement>) => {
+	// 	handleSubmit(e)
+	// }
+
 	return (
 		<main>
 			<ThemeProvider theme={theme}>
@@ -172,9 +221,10 @@ const App: React.FC<Props> = () => {
 					container
 					spacing={2}
 					justifyContent="center"
-					padding={2}
+					padding={0}
 					fontFamily="Roboto"
 					id="title"
+					lg={12}
 				>
 					<h1>Cover Letter GPT 📃</h1>
 				</Grid2>
@@ -182,32 +232,81 @@ const App: React.FC<Props> = () => {
 					className="mainGrid"
 					container
 					spacing={2}
-					padding={3}
+					padding={2}
 					// justifyContent="center"
 					// display="flex"
 				>
+					<Grid2
+						spacing={2}
+						justifyContent="center"
+						fontFamily="Roboto"
+						lg={12}
+						padding={2}
+						paddingLeft={15}
+						paddingRight={15}
+					>
+						<p>
+							Create a professional cover letter in minutes with this
+							GPT-powered web app. Simply attach your resume, enter a job
+							description, and let us create a cover letter for you.
+						</p>
+						<br></br>
+						<p
+							style={{
+								textAlign: 'center',
+							}}
+						>
+							Try it now and land your dream job!
+						</p>
+					</Grid2>
 					<Grid2 lg={6}>
 						<form onSubmit={handleSubmit}>
 							<Grid2>
 								<div
-									className={`drag-and-drop-container ${
-										isDragging ? 'dragging' : ''
-									}`}
-									onDragEnter={handleDragEnter}
-									onDragLeave={handleDragLeave}
-									onDragOver={handleDragOver}
-									onDrop={handleDrop}
+									style={{
+										padding: '7px',
+										backgroundColor: 'white',
+										borderRadius: '10px',
+									}}
 								>
-									<p>
-										Drag and drop your PDF or Word Resume here, or browse local
-										files.
-									</p>
-									<input
-										type="file"
-										accept=".pdf,.doc,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
-										onChange={handleFileChange}
-									/>
-									{file && <p>{file.name}</p>}
+									<div
+										className={`drag-and-drop-container ${
+											isDragging ? 'dragging' : ''
+										}`}
+										onDragEnter={handleDragEnter}
+										onDragLeave={handleDragLeave}
+										onDragOver={handleDragOver}
+										onDrop={handleDrop}
+									>
+										<svg
+											className="dropIcon"
+											viewBox="0 0 1024 1024"
+											focusable="false"
+											data-icon="inbox"
+											width="3em"
+											height="3em"
+											fill="#1677ff"
+											aria-hidden="true"
+										>
+											<path d="M885.2 446.3l-.2-.8-112.2-285.1c-5-16.1-19.9-27.2-36.8-27.2H281.2c-17 0-32.1 11.3-36.9 27.6L139.4 443l-.3.7-.2.8c-1.3 4.9-1.7 9.9-1 14.8-.1 1.6-.2 3.2-.2 4.8V830a60.9 60.9 0 0060.8 60.8h627.2c33.5 0 60.8-27.3 60.9-60.8V464.1c0-1.3 0-2.6-.1-3.7.4-4.9 0-9.6-1.3-14.1zm-295.8-43l-.3 15.7c-.8 44.9-31.8 75.1-77.1 75.1-22.1 0-41.1-7.1-54.8-20.6S436 441.2 435.6 419l-.3-15.7H229.5L309 210h399.2l81.7 193.3H589.4zm-375 76.8h157.3c24.3 57.1 76 90.8 140.4 90.8 33.7 0 65-9.4 90.3-27.2 22.2-15.6 39.5-37.4 50.7-63.6h156.5V814H214.4V480.1z"></path>
+										</svg>
+										<p>Drop your PDF or Word Resume</p>
+										<div style={{ paddingTop: '10px' }}>
+											<a
+												// id="browseFiles"
+												href="#"
+												onClick={handleBrowseClick}
+											>
+												Browse my Computer
+											</a>
+										</div>
+										<input
+											type="file"
+											accept=".pdf,.doc,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+											onChange={handleFileChange}
+										/>
+										{file && <p id="resume">{file.name}</p>}
+									</div>
 								</div>
 							</Grid2>
 
@@ -234,16 +333,30 @@ const App: React.FC<Props> = () => {
 								direction="column"
 								alignItems="flex-end"
 							>
-								<Button
+								<LoadingButton
+									// sx={{
+									// 	'.MuiLoadingButton-root': { borderRadius: '10px' },
+									// }}
+									type="submit"
+									size="medium"
+									// onClick={handleClick}
+									endIcon={<DescriptionIcon />}
+									loading={loading}
+									loadingPosition="end"
+									variant="contained"
+								>
+									<span>Generate Cover Letter</span>
+								</LoadingButton>
+								{/* <Button
 									sx={{ '.MuiButtonBase-root': { borderRadius: '10px' } }}
 									variant="contained"
 									type="submit"
-									color="success"
+									color="primary"
 								>
 									Generate Cover Letter
-								</Button>
+								</Button> */}
 							</Grid2>
-							<Grid2
+							{/* <Grid2
 								style={{ textAlign: 'center' }}
 								display="flex"
 								justifyContent="center"
@@ -253,10 +366,10 @@ const App: React.FC<Props> = () => {
 								{loading && (
 									<CircularProgress
 										thickness={7}
-										color="success"
+										color="primary"
 									/>
 								)}
-							</Grid2>
+							</Grid2> */}
 						</form>
 					</Grid2>
 					<Grid2 lg={6}>
@@ -273,6 +386,19 @@ const App: React.FC<Props> = () => {
 						</Grid2>
 					</Grid2>
 				</Grid2>
+				<Snackbar
+					open={alert}
+					autoHideDuration={6000}
+					onClose={handleClose}
+				>
+					<Alert
+						onClose={handleClose}
+						severity="error"
+						sx={{ width: '100%' }}
+					>
+						Please attach your resume and enter a job description!
+					</Alert>
+				</Snackbar>
 			</ThemeProvider>
 		</main>
 	)
