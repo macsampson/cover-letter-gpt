@@ -246,7 +246,7 @@ const App: React.FC<Props> = () => {
 						paddingRight={15}
 					>
 						<p>
-							Create a professional cover letter in minutes with this
+							Create a professional cover letter in seconds with this
 							GPT-powered web app. Simply attach your resume, enter a job
 							description, and let us create a cover letter for you.
 						</p>
