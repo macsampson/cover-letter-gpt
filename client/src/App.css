@@ -212,6 +212,7 @@ a {
 
 a:hover {
 	color: #6aa8ff;
+	cursor: pointer;
 }
 
 h1 {
