@@ -284,8 +284,19 @@ const App: React.FC<Props> = () => {
 					fontFamily="Roboto"
 					id="title"
 					lg={12}
+					alignItems="center"
 				>
-					<h1>Cover Letter GPT 📃</h1>
+					<h1
+						style={{
+							marginRight: '15px',
+						}}
+					>
+						Cover Letter GPT
+					</h1>
+					<img
+						src="/favicon.png"
+						alt="logo"
+					/>
 				</Grid2>
 
 				<Grid2
