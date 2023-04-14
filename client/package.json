@@ -16,7 +16,8 @@
     "@mui/lab": "^5.0.0-alpha.124",
     "@mui/material": "^5.11.14",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "typeface-roboto": "^1.1.13"
   },
   "devDependencies": {
     "@types/react": "^18.0.28",
