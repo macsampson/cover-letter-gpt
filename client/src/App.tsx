@@ -8,7 +8,6 @@ import "./App.css";
 import Button from "@mui/material/Button";
 import Grid2 from "@mui/material/Unstable_Grid2"; // Grid version 2
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { fontSize } from "@mui/system";
 import LoadingButton from "@mui/lab/LoadingButton";
 import DescriptionIcon from "@mui/icons-material/Description";
 import TwitterIcon from "@mui/icons-material/Twitter";
@@ -133,7 +132,7 @@ const App: React.FC<Props> = () => {
         >
           <h1
             style={{
-              marginRight: "15px",
+              paddingRight: "15px",
             }}
           >
             Cover Letter GPT
@@ -214,8 +213,6 @@ const App: React.FC<Props> = () => {
           justifyContent="center"
           direction="column"
           alignItems="flex-end"
-          paddingRight={3}
-          paddingTop={9}
         >
           <Button
             target="_blank"
@@ -233,8 +230,6 @@ const App: React.FC<Props> = () => {
           justifyContent="center"
           direction="column"
           alignItems="flex-end"
-          paddingRight={3}
-          paddingTop={2}
         >
           <PrivacyPolicy />
         </Grid2>
