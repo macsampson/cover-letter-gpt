@@ -220,3 +220,17 @@ a:hover {
 	color: #6aa8ff;
 	cursor: pointer;
 }
+
+.footer {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	padding: 10px;
+}
+
+/* create media query to make footer position relative on mobile */
+@media (max-width: 600px) {
+	.footer {
+		position: relative;
+	}
+}

@@ -159,33 +159,34 @@ const App: React.FC<Props> = () => {
 					open={state.alert}
 					onAlertClose={handleAlertClose}
 				/>
-
-				<Grid2
-					style={{ textAlign: 'center' }}
-					display="flex"
-					justifyContent="center"
-					direction="column"
-					alignItems="flex-end"
-				>
-					<Button
-						target="_blank"
-						href="https://twitter.com/_macsampson_"
-						size="small"
-						variant="outlined"
-						endIcon={<TwitterIcon />}
+				<footer className="footer">
+					<Grid2
+						style={{ textAlign: 'center' }}
+						display="flex"
+						justifyContent="center"
+						direction="column"
+						alignItems="flex-end"
 					>
-						Follow me on Twitter
-					</Button>
-				</Grid2>
-				<Grid2
-					style={{ textAlign: 'center' }}
-					display="flex"
-					justifyContent="center"
-					direction="column"
-					alignItems="flex-end"
-				>
-					<PrivacyPolicy />
-				</Grid2>
+						<Button
+							target="_blank"
+							href="https://twitter.com/_macsampson_"
+							size="small"
+							variant="outlined"
+							endIcon={<TwitterIcon />}
+						>
+							Follow me on Twitter
+						</Button>
+					</Grid2>
+					<Grid2
+						style={{ textAlign: 'center' }}
+						display="flex"
+						justifyContent="center"
+						direction="column"
+						alignItems="flex-end"
+					>
+						<PrivacyPolicy />
+					</Grid2>
+				</footer>
 			</ThemeProvider>
 		</main>
 	)
