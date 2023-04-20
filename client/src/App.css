@@ -102,14 +102,14 @@ html {
   );
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#00ffad",endColorstr="#00ddff",GradientType=1);
   /* background-image: url(/bg.jpg); */
-  background-size: cover;
+  /* background-size: cover;
   background-attachment: fixed;
-  background-position: center center;
+  background-position: center center; */
   font-family: "Roboto";
-  -webkit-background-size: cover;
+  /* -webkit-background-size: cover;
   -moz-background-size: cover;
-  -o-background-size: cover;
-  height: 100%;
+  -o-background-size: cover; */
+  /* height: 100%; */
   overflow-x: hidden;
 }
 
