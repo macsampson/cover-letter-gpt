@@ -84,7 +84,9 @@ function PrivacyPolicy() {
   }
   return (
     <div style={styles.container}>
-      <a onClick={handleClickDialog}>- Privacy -</a>
+      <a style={{ color: "white" }} onClick={handleClickDialog}>
+        - Privacy -
+      </a>
       <BootstrapDialog
         onClose={handleCloseDialog}
         aria-labelledby="customized-dialog-title"
