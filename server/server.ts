@@ -67,8 +67,34 @@ app.post('/', async (req: Request, res: Response) => {
 							content: `here is my resume: "${resume}"  here is the job description: "${fields.text}"`,
 						},
 						{
+							role: `assistant`,
+							content: `Dear Francis,
+
+Two months ago, I shattered a record I had previously considered unbreakable. My solutions for developing and optimizing ABC’s flagship apps and online software helped increase annual mean NPS to a staggering 61.8 (37% increase.) Soon after that, I came across the opening for Software Development Team Lead at XYZ Corp. As a lifelong fan of your cutting-edge software solutions, I immediately knew that this post was the perfect match for my skills and expertise.
+
+I know your chief focus for the upcoming 18 months will be on developing new mobile apps for personal finance management. In my current position as IT Team Lead with ABC Inc., my primary challenge has been to supervise the development and design of our mobile and desktop applications for flawless user experience. Here are some of my most recent results:
+
+ 
+
+   - 3 out of 4 apps I developed in 2017 have been rated above 4.7 stars in both AppStore and Google Play.
+   - Upgraded premium versions of our products increased quarterly revenue by 86% in 2017 Q4.
+   - New Help Desk solutions cut Customer Effort Scores by 31%.
+
+ 
+
+With more than 10 years of experience in software engineering, I am positive I can help XYZ Corp achieve similar results.
+
+End User Satisfaction has always been the single most important KPI for measuring my teams’ performance. I know that this value is also the cornerstone of XYZ’s mission and vision—that’s why I was so excited when I first saw your opening.
+
+When can we schedule a meeting and discuss how my success at ABC can translate into IT Happiness growth for you?
+
+Kind Regards,
+
+Tabitha Hirvanen`,
+						},
+						{
 							role: `system`,
-							content: `Please compose a compelling cover letter in 200 words or less explaining why I am the best fit for this role. Use the StoryBrand Framework. Please sign off with my name.`,
+							content: `Please compose a compelling cover letter in 200 words or less explaining why I am the best fit for this role. Do not just list skills and experiences from my resume or job description word for word. Please sign off with my name.`,
 						},
 					],
 					temperature: 0.9,
