@@ -99,7 +99,7 @@ const App: React.FC<Props> = () => {
 					>
 						<p>
 							Create a professional cover letter in seconds with this
-							GPT-powered web app. Simply attach your resume, enter a job
+							GPT-powered cover letter generator. Simply attach your resume, enter a job
 							description, and let it create a cover letter for you.
 						</p>
 						<br></br>
@@ -171,16 +171,16 @@ const App: React.FC<Props> = () => {
 						direction="column"
 						alignItems="flex-end"
 					>
-						<Button
+						{/* <Button
 							target="_blank"
-							href="https://twitter.com/_macsampson_"
+							href="https://twitter.com/macxsampson"
 							size="small"
 							variant="outlined"
 							endIcon={<TwitterIcon />}
 							className="twitter-button"
 						>
 							Follow me on Twitter
-						</Button>
+						</Button> */}
 					</Grid2>
 					<Grid2
 						style={{ textAlign: 'center' }}
