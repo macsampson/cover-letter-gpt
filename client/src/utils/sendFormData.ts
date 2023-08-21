@@ -1,4 +1,23 @@
 // sendFormData.ts
+
+// create two constants, one for prod and one for dev
+const prod = {
+	url: {
+		API_URL: 'https://cover-letter-gpt.onrender.com',
+	},
+}
+
+const dev = {
+	url: {
+		API_URL: 'http://localhost:5000',
+	},
+}
+
+let dev_mode = true
+
+// set the API_URL to the correct constant
+const API_URL = dev_mode ? dev.url.API_URL : prod.url.API_URL
+
 interface ResponseState {
 	loading: boolean
 }
@@ -10,7 +29,7 @@ export const sendFormData = async (
 ): Promise<ResponseState> => {
 	// console.log('sendFormData')
 	try {
-		const response = await fetch('https://cover-letter-gpt.onrender.com', {
+		const response = await fetch(API_URL, {
 			method: 'POST',
 			body: formData,
 		})
