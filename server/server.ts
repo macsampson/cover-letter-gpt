@@ -69,10 +69,11 @@ app.post('/', async (req: Request, res: Response) => {
 									The cover letter you output must be short and sweet.
 									Your main goal is to maximize the chances of the job seeker getting hired with this cover letter.
 									You only have to mention the applicants qualifications that are relevant to the keywords from the Job Description.
+									If the applicant has personal projects, you can mention how they relate to the job position.
 									You can reorganize and paraphrase the letter as needed to prioritize the most job-relevant information.
 									Write only the body of the letter, don't write the headers of the letter.
 									Make it 65% Professional; 35% Warm and personal.
-									Don't use textual text from the applicant's profile.
+									Don't use textual text from the applicant's resume.
 									The letter must cover these 4 topics, in any order:
 									- Engaging introduction
 									- Express passion and interest in the position
@@ -84,8 +85,8 @@ app.post('/', async (req: Request, res: Response) => {
 									Please keep it to 250 words or less.`,
 						},
 					],
-					temperature: 0.75,
-					max_tokens: 500,
+					temperature: 0.9,
+					max_tokens: 1200,
 					stream: true,
 				},
 				{ responseType: 'stream' }
