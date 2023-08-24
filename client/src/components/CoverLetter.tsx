@@ -3,26 +3,45 @@ import { TextField } from "@mui/material";
 
 type Props = {
   apiResponse: string;
+  submitted: boolean;
 };
 
-function CoverLetter({ apiResponse }: Props) {
+function CoverLetter({ apiResponse, submitted }: Props) {
   // state object for cover letter
   let [coverLetter, setCoverLetter] = useState("");
+  let [placeholder, setPlaceholder] = useState(
+    "Your cover letter will appear here."
+  );
 
   // use effect for updating cover letter
   useEffect(() => {
     setCoverLetter(apiResponse);
   }, [apiResponse]);
 
+  useEffect(() => {
+    if (submitted) {
+      setPlaceholder("Generating cover letter");
+      const interval = setInterval(() => {
+        setPlaceholder((prevPlaceholder) => {
+          if (prevPlaceholder === "Generating cover letter...") {
+            return "Generating cover letter";
+          } else {
+            return prevPlaceholder + ".";
+          }
+        });
+      }, 500);
+
+      return () => clearInterval(interval);
+    }
+  }, [submitted]);
+
   return (
     <TextField
       sx={{ ".MuiInputBase-root": { borderRadius: "10px" } }}
       id="cover-letter-result"
-      placeholder="Waiting for cover letter generation..."
+      placeholder={placeholder}
       value={coverLetter}
-      // onChange={(e) => setApiResponse(e.target.value)}
       multiline
-      // style={{ width: '100%' }}
     ></TextField>
   );
 }

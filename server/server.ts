@@ -56,12 +56,23 @@ app.post('/', async (req: Request, res: Response) => {
 		try {
 			const response: AxiosResponse<any> = await openai.createChatCompletion(
 				{
-					model: 'gpt-4',
+					// model: 'ft:gpt-3.5-turbo-0613:mac::7quLzhNl',
+					model: 'gpt-3.5-turbo',
 					messages: [
-						{
-							role: `user`,
-							content: `here is my resume: "${resume}" and here is the job description: "${fields.text}"`,
-						},
+						// {
+						// 	
+						// 	content: `Please generate a cover letter given a resume and a job description. Follow each of the following rules exactly:
+						// 	- Do not include any email addresses, web urls or address information in the cover letter.
+						// 	- Do not include any phone numbers or dates. 
+						// 	- Keep it under 250 words. 
+						// 	- Make a space between paragraphs.
+						// 	- end the letter with "Sincerely, [your name]"
+						// 	- Only use textual text from the resume.
+						// 	- Include information from personal projects if relevant to the job description.
+						// 	- Focus on the most relevant information from the resume.
+						// 	- Do not just copy and paste the resume.`,
+						// },
+
 						{
 							role: `system`,
 							content: `Assume you are an expert Human Resources Manager, with years of experience and a Doctorate in Business Administration.
@@ -79,13 +90,18 @@ app.post('/', async (req: Request, res: Response) => {
 									- Express passion and interest in the position
 									- Persuasively highlight how the applicant’s background relates to the job position
 									- The things you believe distinguish you from other candidates
+									- Include information from personal projects if relevant to the job description.
 
 									Make sure the Cover Letter is short, professional and meaningful, avoiding sounding like ChatGPT or an AI helper.
 									Make sure all paragraphs in the cover letter are well connected with each other, most paragraphs should have topic sentences, concluding sentences and connecting clauses. The text must flow through ideas naturally and logically.
 									Please keep it to 250 words or less.`,
 						},
+						{
+							role: `user`,
+							content: `here is my resume: "${resume}" and here is the job description: "${fields.text}"`,
+						},
 					],
-					temperature: 0.9,
+					temperature: 0.5,
 					max_tokens: 1200,
 					stream: true,
 				},
@@ -99,6 +115,8 @@ app.post('/', async (req: Request, res: Response) => {
 				console.log('stream complete');
 				return res.status(200).end();
 			});
+
+			// console.log('response', response);
 			// })
 		} catch (error) {
 			console.log(error); // handle error
