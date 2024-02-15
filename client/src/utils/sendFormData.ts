@@ -1,4 +1,4 @@
-const API_URL: string = process.env.ENDPOINT || "http://localhost:5000"
+const API_URL: string = import.meta.env.VITE_ENDPOINT
 
 interface ResponseState {
   loading: boolean
